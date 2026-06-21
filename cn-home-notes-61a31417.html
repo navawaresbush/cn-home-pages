@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乐竞体育 · 快速了解平台定位</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5fafc;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 1.5rem;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 2rem;
+            box-shadow: 0 12px 30px -8px rgba(0, 80, 90, 0.08);
+            overflow: hidden;
+            padding: 2rem 1.8rem;
+        }
+
+        /* 开篇短句 —— 用一条淡绿蓝线引导 */
+        .opener {
+            font-size: 1.8rem;
+            font-weight: 350;
+            letter-spacing: 0.02em;
+            color: #0f766e;
+            margin-bottom: 0.3rem;
+            padding-left: 0.75rem;
+            border-left: 5px solid #14b8a6;
+            line-height: 1.3;
+        }
+        .opener em {
+            font-style: normal;
+            background: linear-gradient(145deg, #0d9488 0%, #0f766e 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 500;
+        }
+
+        /* 承接段落 —— 温和解释用途 */
+        .intro-text {
+            margin: 1.8rem 0 2rem 0;
+            font-size: 1.05rem;
+            color: #334155;
+        }
+        .intro-text p {
+            margin-bottom: 1.1rem;
+        }
+        .intro-text a {
+            color: #0f766e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #5eead4;
+            transition: border 0.2s;
+        }
+        .intro-text a:hover {
+            border-bottom: 2px solid #0d9488;
+        }
+
+        /* 网格卡片区域 —— 特点列表 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+            margin: 2rem 0 2.5rem;
+        }
+
+        .feature-card {
+            background: #f0faf9;
+            border-radius: 1.5rem;
+            padding: 1.4rem 1.6rem;
+            border: 1px solid #ccfbf1;
+            transition: box-shadow 0.2s, transform 0.1s;
+            display: flex;
+            flex-direction: column;
+        }
+        .feature-card:hover {
+            box-shadow: 0 6px 14px rgba(13, 148, 136, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .feature-card .card-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.6rem;
+            height: 2.6rem;
+            background: #14b8a6;
+            color: white;
+            border-radius: 1rem;
+            font-size: 1.3rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #0f3b3a;
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #3f5463;
+            line-height: 1.5;
+        }
+
+        /* 场景/提示微段落 —— 嵌入在卡片之下，增加叙事感 */
+        .scene-note {
+            background: #e6f7f5;
+            border-radius: 1.5rem;
+            padding: 1.4rem 1.8rem;
+            margin: 1.5rem 0 2.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.6rem 1rem;
+        }
+        .scene-note span:first-child {
+            font-weight: 500;
+            color: #0d5e5a;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            background: #b8ece2;
+            padding: 0.1rem 0.8rem;
+            border-radius: 30px;
+        }
+        .scene-note p {
+            flex: 1;
+            min-width: 180px;
+            color: #255955;
+            font-size: 0.98rem;
+        }
+
+        /* FAQ 摘要 (极简, 1个问题) */
+        .faq-mini {
+            background: #ffffff;
+            border: 1px solid #d5f0ed;
+            border-radius: 1.5rem;
+            padding: 1.3rem 1.6rem;
+            margin: 1.8rem 0 2rem;
+        }
+        .faq-mini details {
+            cursor: pointer;
+        }
+        .faq-mini summary {
+            font-weight: 500;
+            color: #0f766e;
+            font-size: 1.05rem;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .faq-mini summary::before {
+            content: "▸";
+            color: #14b8a6;
+            font-size: 1.2rem;
+            transition: 0.2s;
+        }
+        .faq-mini details[open] summary::before {
+            content: "▾";
+        }
+        .faq-mini .answer {
+            margin-top: 0.7rem;
+            padding-left: 1.2rem;
+            border-left: 3px solid #99f6e4;
+            color: #374151;
+            font-size: 0.95rem;
+        }
+
+        /* 温和结尾 */
+        .closing {
+            margin-top: 1.2rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #597b7a;
+        }
+        .closing a {
+            color: #0f766e;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .closing a:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        /* 响应式调整 */
+        @media (min-width: 550px) {
+            .feature-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 750px) {
+            .page {
+                padding: 3rem 3.2rem;
+            }
+            .opener {
+                font-size: 2.2rem;
+            }
+            .intro-text {
+                font-size: 1.1rem;
+            }
+            .feature-card {
+                padding: 1.8rem 1.8rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .opener {
+                font-size: 1.5rem;
+            }
+            .page {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 开篇短句 -->
+    <div class="opener">
+        一个页面，让你快速判断：<em>乐竞体育</em> 是什么。
+    </div>
+
+    <!-- 承接段落：自然解释网站用途，从用户角度 -->
+    <div class="intro-text">
+        <p>
+            很多时候，第一次打开一个网站，我们只想知道三件事：这是做什么的？内容靠谱吗？是否值得花时间了解？
+            基于这样的感受，我们梳理了 <a href="https://cn-home-lejing.com">乐竞体育</a> 的核心轮廓，方便你在几十秒内建立清晰印象。
+        </p>
+        <p>
+            这里没有复杂的术语堆砌，只呈现平台最基础的功能取向：体育赛事资讯、数据浏览以及相关互动内容。
+            无论你出于兴趣还是信息需求，都可以从下面的特点中找到线索。
+        </p>
+    </div>
+
+    <!-- 特点列表：网格卡片 -->
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="card-icon">⚽</div>
+            <h3>赛事覆盖</h3>
+            <p>关注主流足球、篮球及部分小众联赛的实时动态与数据更新，页面布局着重信息获取效率。</p>
+        </div>
+        <div class="feature-card">
+            <div class="card-icon">📋</div>
+            <h3>简明浏览</h3>
+            <p>内容模块分区清晰，减少无关干扰。从赛程、结果到排行榜，皆可快速定位。</p>
+        </div>
+        <div class="feature-card">
+            <div class="card-icon">🧭</div>
+            <h3>导航直观</h3>
+            <p>顶部和首页入口都直接指向主要频道，不需要反复跳转。移动端同样保持可用性。</p>
+        </div>
+        <div class="feature-card">
+            <div class="card-icon">📱</div>
+            <h3>适配灵活</h3>
+            <p>页面针对手机与平板做了响应式调整，随时随地打开都能获得一致的浏览体验。</p>
+        </div>
+    </div>
+
+    <!-- 场景提示段落：简短叙述一个常见使用场景，增加真实感 -->
+    <div class="scene-note">
+        <span>👤 典型场景</span>
+        <p>周末傍晚想快速了解五大联赛最新比分和积分变化，打开 <a href="https://cn-home-lejing.com">乐竞体育</a>，信息流直接呈现，不用反复搜索。</p>
+    </div>
+
+    <!-- FAQ 摘要（只精简为一个问题） -->
+    <div class="faq-mini">
+        <details>
+            <summary>这个网站适合哪些人？</summary>
+            <div class="answer">
+                适合希望快速获取体育赛事信息、查看赛程数据、以及关注联赛动态的用户。
+                不论你是资深爱好者还是偶尔想查一场比赛结果，都能找到对应的内容模块。
+            </div>
+        </details>
+    </div>
+
+    <!-- 温和结尾，嵌入链接自然 -->
+    <div class="closing">
+        如果你愿意花一分钟看看实际页面，可以直接前往 <a href="https://cn-home-lejing.com">乐竞体育</a>，
+        自己感受一下结构和内容节奏。
+    </div>
+
+</div>
+</body>
+</html>
