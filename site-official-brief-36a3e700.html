@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>再次遇见 · 爱游戏</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #fafbfc;
+      color: #1e2a36;
+      line-height: 1.6;
+    }
+
+    .wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ---------- hero ---------- */
+    .hero {
+      min-height: 72vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 4rem 1rem 3rem;
+      background: linear-gradient(145deg, #eef8f5 0%, #d6f0ea 100%);
+      border-bottom-left-radius: 36% 10%;
+      border-bottom-right-radius: 36% 10%;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 560;
+      letter-spacing: -0.02em;
+      color: #0c3b3a;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .accent {
+      color: #1b8c82;
+      background: rgba(27, 140, 130, 0.08);
+      padding: 0 0.3rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 680px;
+      color: #2b4b4a;
+      margin: 0.8rem auto 1.2rem;
+    }
+
+    .hero .hint {
+      font-size: 0.95rem;
+      color: #3b6b66;
+      background: #ffffffb3;
+      backdrop-filter: blur(2px);
+      padding: 0.6rem 1.8rem;
+      border-radius: 60px;
+      display: inline-block;
+      margin-top: 1.5rem;
+      border: 1px solid #b1ddd6;
+      box-shadow: 0 2px 6px rgba(0, 70, 60, 0.04);
+    }
+
+    /* ---------- grid / 卡片 ---------- */
+    .section-title {
+      font-size: 1.7rem;
+      font-weight: 480;
+      margin: 3rem 0 1.4rem;
+      color: #15534f;
+      border-left: 5px solid #2eb5a5;
+      padding-left: 1rem;
+    }
+
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.8rem;
+      margin: 1.8rem 0 1rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 32px;
+      padding: 1.8rem 1.5rem 1.5rem;
+      box-shadow: 0 8px 18px rgba(35, 100, 90, 0.04), 0 0 0 1px #e7f3f0;
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+
+    .card:hover {
+      box-shadow: 0 12px 28px rgba(30, 110, 100, 0.08), 0 0 0 1px #c3e3dd;
+      transform: translateY(-3px);
+    }
+
+    .card .emoji-icon {
+      font-size: 2.2rem;
+      display: inline-block;
+      margin-bottom: 0.3rem;
+    }
+
+    .card h3 {
+      font-weight: 540;
+      font-size: 1.3rem;
+      margin: 0.4rem 0 0.5rem;
+      color: #124a45;
+    }
+
+    .card p {
+      color: #345753;
+      font-size: 0.96rem;
+    }
+
+    /* ---------- 说明/引用区 ---------- */
+    .note-area {
+      background: #eef7f4;
+      border-radius: 48px;
+      padding: 2.5rem 2rem;
+      margin: 3rem 0 2.5rem;
+      border: 1px solid #cfebe5;
+    }
+
+    .note-area p {
+      font-size: 1.1rem;
+      max-width: 780px;
+      margin: 0 auto 1rem;
+    }
+
+    .note-area a {
+      color: #0b6b62;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px dotted #2eb5a5;
+      transition: border 0.1s;
+    }
+
+    .note-area a:hover {
+      border-bottom: 2px solid #1a857b;
+    }
+
+    .small-meta {
+      display: block;
+      margin-top: 1.2rem;
+      font-size: 0.92rem;
+      color: #437e76;
+    }
+
+    /* ---------- FAQ摘要 ---------- */
+    .faq-summary {
+      margin: 2.8rem 0;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 1.2rem 1.8rem 1.2rem 1.5rem;
+      margin-bottom: 1rem;
+      border-left: 6px solid #3cb9ab;
+      box-shadow: 0 2px 10px rgba(0, 50, 40, 0.02);
+      transition: background 0.1s;
+    }
+
+    .faq-item strong {
+      color: #1c5c56;
+      font-weight: 550;
+      display: block;
+      margin-bottom: 0.2rem;
+      font-size: 1.05rem;
+    }
+
+    .faq-item p {
+      color: #3f5e59;
+      font-size: 0.96rem;
+      margin: 0.2rem 0 0;
+    }
+
+    /* ---------- 底部 ---------- */
+    .bottom-links {
+      margin-top: 3rem;
+      padding: 2.5rem 0 2rem;
+      text-align: center;
+      border-top: 1px solid #dce8e4;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.8rem 3rem;
+    }
+
+    .bottom-links a {
+      color: #1a6e66;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      font-size: 0.98rem;
+      font-weight: 460;
+      transition: border-bottom 0.1s;
+    }
+
+    .bottom-links a:hover {
+      border-bottom: 1px solid #2ba396;
+    }
+
+    .footer-note {
+      margin: 1.2rem 0 1.8rem;
+      color: #527f78;
+      font-size: 0.9rem;
+    }
+
+    /* ---------- 响应式 ---------- */
+    @media (max-width: 700px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero {
+        padding: 3rem 1rem 2.5rem;
+        border-bottom-left-radius: 20% 6%;
+        border-bottom-right-radius: 20% 6%;
+      }
+      .hero p {
+        font-size: 1.05rem;
+      }
+      .section-title {
+        font-size: 1.4rem;
+      }
+      .note-area {
+        padding: 1.8rem 1.2rem;
+        border-radius: 36px;
+      }
+      .grid-cards {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .faq-item {
+        padding: 1rem 1.2rem;
+      }
+      .bottom-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .hero .hint {
+        font-size: 0.8rem;
+        padding: 0.4rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>还记得 <span class="accent">爱游戏</span> 吗？</h1>
+  <p>有些站点，值得你再次想起。<br>这里没有打扰，只有持续的内容与安静的陪伴。</p>
+  <div class="hint">✨ 收藏它，就像收藏一个老朋友</div>
+</div>
+
+<div class="wrapper">
+
+  <!-- 优势卡片区 -->
+  <h2 class="section-title">为什么值得再次回来</h2>
+  <div class="grid-cards">
+    <div class="card">
+      <div class="emoji-icon">📌</div>
+      <h3>记住你的节奏</h3>
+      <p>无论隔了多久，熟悉的页面和更新的内容，总能让你无缝接上。不需要重新适应，没有多余门槛。</p>
+    </div>
+    <div class="card">
+      <div class="emoji-icon">🔄</div>
+      <h3>持续，但不打扰</h3>
+      <p>内容定期更新，但不会用弹窗或冗余推送打扰你。你可以安静地浏览，也可以随时离开，下次再来。</p>
+    </div>
+    <div class="card">
+      <div class="emoji-icon">🌱</div>
+      <h3>轻巧而稳定</h3>
+      <p>页面结构干净、加载利落，在移动端和桌面端都保持一致的体验。没有多余的装饰，只有你想看的东西。</p>
+    </div>
+  </div>
+
+  <!-- 说明区 + 链接自然嵌入 -->
+  <div class="note-area">
+    <p>如果你曾把 <a href="https://site-official-igame.com">爱游戏</a> 加入书签，或只是偶然路过，这里始终为你保留着熟悉的氛围。很多朋友选择把它放在浏览器收藏夹的一角，偶尔回来看看，不必特意记住什么，一切又都还在。</p>
+    <p>这里不追求一时热闹，更在意长期的陪伴。正如一个安静的角落，你来，或者不来，它都在那里。</p>
+    <span class="small-meta">—— 一个你可以信任的站点 · 始终如一</span>
+  </div>
+
+  <!-- FAQ 摘要（非完整，只取几个） -->
+  <h2 class="section-title">一些你可能想问的</h2>
+  <div class="faq-summary">
+    <div class="faq-item">
+      <strong>❓ 我上次访问是什么时候？</strong>
+      <p>你不需要记住。只要再次打开 <a href="https://site-official-igame.com" style="color:#1b7a6f; border-bottom:1px dotted #2eb5a5;">爱游戏</a>，页面会以最自然的状态迎接你。没有过期感，也没有需要重新注册的麻烦。</p>
+    </div>
+    <div class="faq-item">
+      <strong>❓ 内容会频繁变化吗？</strong>
+      <p>会更新，但节奏克制。你每次回来都能看到一些细微的新东西，但又不会感到陌生。就像一家你常去的小店，总有些熟悉的元素。</p>
+    </div>
+    <div class="faq-item">
+      <strong>❓ 在手机上体验如何？</strong>
+      <p>我们对移动端做了专门优化，卡片、按钮、间距都适应了小屏幕。无论你在通勤时还是休息前，都能舒适浏览。</p>
+    </div>
+  </div>
+
+  <!-- 底部链接（包含多个链接，但必须有且仅有一个文本为“爱游戏”的链接） -->
+  <div class="bottom-links">
+    <a href="https://site-official-igame.com">爱游戏</a>
+    <a href="#">关于此页</a>
+    <a href="#">内容存档</a>
+    <a href="#">常见问题</a>
+    <a href="#">联系方式</a>
+  </div>
+  <div class="footer-note">
+    <span>从收藏到重逢，始终如一 · 爱游戏</span>
+  </div>
+</div>
+
+</body>
+</html>
