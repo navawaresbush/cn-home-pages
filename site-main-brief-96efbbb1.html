@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 知识库入口</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fdf1e0 0%, #f9dec9 60%, #f3cdb0 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+    }
+    .page-wrapper {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .main-card {
+      background: #fffcf7;
+      border-radius: 2.5rem;
+      box-shadow: 0 20px 40px -12px rgba(160, 90, 40, 0.25);
+      padding: 2.5rem 2.2rem;
+    }
+    @media (min-width: 640px) {
+      .main-card {
+        padding: 3.5rem 3rem;
+      }
+    }
+    .hero {
+      margin-bottom: 2.8rem;
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #6b3f1f;
+      margin-bottom: 0.35rem;
+    }
+    .hero .subhead {
+      font-size: 1.1rem;
+      color: #8a623f;
+      border-left: 4px solid #dba37a;
+      padding-left: 1rem;
+      font-weight: 400;
+    }
+    .grid-dir {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin: 2.5rem 0 2.2rem;
+    }
+    @media (min-width: 700px) {
+      .grid-dir {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .dir-section {
+      background: #fff9f2;
+      border-radius: 1.8rem;
+      padding: 1.6rem 1.4rem 1.8rem;
+      box-shadow: inset 0 1px 3px rgba(200, 140, 80, 0.1), 0 6px 12px rgba(180, 100, 40, 0.08);
+      transition: box-shadow 0.15s ease;
+    }
+    .dir-section:hover {
+      box-shadow: inset 0 1px 3px rgba(200, 140, 80, 0.1), 0 10px 18px rgba(160, 80, 30, 0.12);
+    }
+    .dir-section h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #5e3a1e;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.9rem;
+      border-bottom: 2px solid #eed8c0;
+      padding-bottom: 0.4rem;
+    }
+    .dir-section h2::before {
+      content: "·";
+      font-weight: 700;
+      color: #c5865a;
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+    .dir-section p {
+      color: #4f3a28;
+      line-height: 1.6;
+      font-size: 0.98rem;
+      margin-bottom: 0.6rem;
+    }
+    .dir-section .inset-link {
+      display: inline-block;
+      background: #f5e4d2;
+      padding: 0.25rem 0.9rem;
+      border-radius: 2rem;
+      font-weight: 500;
+      color: #5b3b21;
+      text-decoration: none;
+      transition: background 0.2s;
+      font-size: 0.95rem;
+    }
+    .dir-section .inset-link:hover {
+      background: #e9cfb4;
+    }
+    .highlight-box {
+      background: #faf0e6;
+      border-radius: 1.6rem;
+      padding: 1.5rem 1.6rem;
+      margin: 1.8rem 0 2.2rem;
+      border: 1px solid #ebd9c6;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.5rem 0.75rem;
+    }
+    .highlight-box .label {
+      font-weight: 600;
+      color: #7f542f;
+      font-size: 0.95rem;
+      background: #f1ddc9;
+      padding: 0.2rem 1rem;
+      border-radius: 24px;
+    }
+    .highlight-box .sentence {
+      color: #3d2a19;
+      line-height: 1.6;
+      font-size: 1rem;
+      flex: 1 1 280px;
+    }
+    .highlight-box .sentence a {
+      color: #894e26;
+      font-weight: 600;
+      text-decoration: none;
+      background: transparent;
+      padding: 0.08rem 0.2rem;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .highlight-box .sentence a:hover {
+      background: #dbb998;
+      color: #3b220f;
+    }
+    .info-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2rem;
+      background: #fffaf4;
+      border-radius: 1.8rem;
+      padding: 1.4rem 1.6rem;
+      margin: 1.6rem 0 0.8rem;
+      border: 1px solid #e7d3be;
+    }
+    .info-item {
+      flex: 1 1 160px;
+    }
+    .info-item .tag {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #a77b57;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+    .info-item .value {
+      font-size: 1rem;
+      color: #3b2b1b;
+    }
+    .tip-area {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      background: #f8ede2;
+      border-radius: 2rem;
+      padding: 1.25rem 1.6rem 1.5rem;
+      margin: 2.2rem 0 0.6rem;
+    }
+    .tip-area .tip-title {
+      font-weight: 600;
+      color: #6a4327;
+      font-size: 0.98rem;
+    }
+    .tip-area ul {
+      list-style: none;
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .tip-area ul li {
+      padding-left: 1.2rem;
+      position: relative;
+      color: #4e3824;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .tip-area ul li::before {
+      content: "•";
+      color: #b57d52;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+    .faq-mini {
+      margin-top: 2rem;
+      padding-top: 1.2rem;
+      border-top: 1px dashed #dcc5b0;
+    }
+    .faq-mini details {
+      margin-bottom: 0.8rem;
+      background: #fffaf3;
+      border-radius: 1.4rem;
+      padding: 0.4rem 1rem 0.6rem;
+      border: 1px solid #e9d7c4;
+      transition: background 0.1s;
+    }
+    .faq-mini details[open] {
+      background: #f9f0e5;
+    }
+    .faq-mini summary {
+      font-weight: 500;
+      color: #694428;
+      cursor: pointer;
+      padding: 0.3rem 0;
+      font-size: 0.98rem;
+    }
+    .faq-mini .answer {
+      color: #3c2b1b;
+      padding: 0.35rem 0.2rem 0.2rem;
+      font-size: 0.93rem;
+      line-height: 1.5;
+    }
+    .footer-note {
+      margin-top: 2.4rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #8c6e53;
+      border-top: 1px solid #ebdacb;
+      padding-top: 1.6rem;
+    }
+    .footer-note a {
+      color: #7e502f;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .footer-note a:hover {
+      color: #422b18;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+  <div class="main-card">
+    <div class="hero">
+      <h1>爱游戏 · 知识库</h1>
+      <div class="subhead">稳定入口 · 信息导览 · 使用说明</div>
+    </div>
+
+    <!-- 目录感布局：两列说明区 -->
+    <div class="grid-dir">
+      <div class="dir-section">
+        <h2>平台简介</h2>
+        <p><a href="https://site-main-igame.com" class="inset-link">爱游戏</a> 是一个专注游戏内容与社区交流的线上平台。这里聚合了多种游戏资讯、玩法参考以及玩家讨论空间。页面结构清晰，方便快速定位感兴趣的内容。</p>
+        <p>无论你是寻找基础介绍，还是想了解近期热门话题，都可以从站点主页出发。</p>
+      </div>
+      <div class="dir-section">
+        <h2>主要特点</h2>
+        <p>· 模块化分区：资讯、攻略、讨论版块各自独立。</p>
+        <p>· 信息更新及时：日常内容由社区共同维护。</p>
+        <p>· 低干扰阅读：界面以内容展示为主，不堆砌繁杂元素。</p>
+        <p>· 长期稳定：域名长期维护，入口可靠。</p>
+      </div>
+    </div>
+
+    <!-- 提示区 / 入口句子 -->
+    <div class="highlight-box">
+      <span class="label">📘 入口说明</span>
+      <span class="sentence">如需直接浏览首页，可访问 <a href="https://site-main-igame.com">爱游戏</a>。该地址为长期使用的主站入口，适合添加书签或作为日常访问起点。</span>
+    </div>
+
+    <!-- 相关信息区：结构化信息 -->
+    <div class="info-row">
+      <div class="info-item">
+        <span class="tag">适用场景</span>
+        <span class="value">游戏资讯 · 攻略参考 · 社区交流</span>
+      </div>
+      <div class="info-item">
+        <span class="tag">内容特征</span>
+        <span class="value">玩家投稿 · 编辑整理 · 定期更新</span>
+      </div>
+      <div class="info-item">
+        <span class="tag">访问方式</span>
+        <span class="value">浏览器直接打开，无需额外注册</span>
+      </div>
+    </div>
+
+    <!-- 提示区：使用建议 -->
+    <div class="tip-area">
+      <div class="tip-title">使用建议 · 提示</div>
+      <ul>
+        <li>首次访问可先浏览首页导航，了解各分区功能。</li>
+        <li>部分内容由玩家群体贡献，建议结合多方信息参考。</li>
+        <li>页面未包含自动跳转或强制弹窗，浏览体验较为直接。</li>
+        <li>如遇到加载异常，可稍后刷新或检查网络连接。</li>
+      </ul>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+      <details>
+        <summary>爱游戏 主要面向哪些用户？</summary>
+        <div class="answer">面向普通游戏爱好者、攻略查阅者以及希望参与讨论的玩家。内容覆盖多种类型游戏，不局限于特定平台。</div>
+      </details>
+      <details>
+        <summary>是否需要注册才能浏览？</summary>
+        <div class="answer">浏览首页和大部分公开内容无需注册。部分互动功能（如评论或发帖）可能需要创建账号，具体以页面提示为准。</div>
+      </details>
+      <details>
+        <summary>如何确保访问的是稳定入口？</summary>
+        <div class="answer">直接使用 <a href="https://site-main-igame.com" style="color:#6a4327;text-decoration:underline;text-underline-offset:2px;">爱游戏</a> 主域名。该入口长期有效，建议通过官方渠道或可信来源获取。</div>
+      </details>
+    </div>
+
+    <div class="footer-note">
+      <span>本页面为知识库式介绍页 · 信息更新于 2025 · 主站入口：<a href="https://site-main-igame.com">爱游戏</a></span>
+    </div>
+  </div>
+</div>
+</body>
+</html>
