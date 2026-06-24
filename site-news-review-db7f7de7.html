@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 深度游戏信息与场景探索</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f5f7fa;
+            color: #1e2a3a;
+            line-height: 1.5;
+        }
+
+        .wrapper {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0b1a2e 0%, #1b2f45 100%);
+            color: #eef3f9;
+            padding: 72px 20px 60px;
+            margin-bottom: 40px;
+            border-radius: 0 0 32px 32px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .hero .subhead {
+            font-size: 1.2rem;
+            max-width: 640px;
+            opacity: 0.85;
+            font-weight: 400;
+            margin-bottom: 28px;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+            color: #b6cadd;
+        }
+
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-meta i {
+            display: inline-block;
+            width: 18px;
+            text-align: center;
+        }
+
+        /* 网格卡片区 —— 信息卡片式 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            margin: 48px 0;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 28px 22px 26px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.25s ease;
+            border: 1px solid #e9edf2;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.07);
+            border-color: #cfdae7;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #132433;
+            letter-spacing: -0.01em;
+        }
+
+        .card p {
+            color: #2c3b4e;
+            font-size: 0.98rem;
+            margin-bottom: 14px;
+        }
+
+        .card .tag {
+            display: inline-block;
+            background: #eef2f8;
+            color: #1f3a57;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 2px 12px;
+            border-radius: 30px;
+            letter-spacing: 0.02em;
+            margin-top: 6px;
+        }
+
+        .highlight-link {
+            color: #c7522a;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        .highlight-link:hover {
+            border-bottom-color: #c7522a;
+        }
+
+        .intro-block {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 36px 32px;
+            margin: 32px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e9edf2;
+        }
+
+        .intro-block h2 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #0b1e32;
+        }
+
+        .intro-block p {
+            font-size: 1rem;
+            color: #1f3144;
+            margin-bottom: 20px;
+            max-width: 760px;
+        }
+
+        .link-embed {
+            font-size: 1rem;
+            background: #f5f8fc;
+            padding: 14px 22px;
+            border-radius: 50px;
+            display: inline-block;
+            border-left: 4px solid #c7522a;
+        }
+
+        .faq-mini {
+            margin: 48px 0 32px;
+        }
+
+        .faq-mini details {
+            background: white;
+            border-radius: 16px;
+            padding: 16px 24px;
+            margin-bottom: 12px;
+            border: 1px solid #e2e8f0;
+            transition: background 0.1s;
+        }
+
+        .faq-mini details[open] {
+            background: #fafcff;
+        }
+
+        .faq-mini summary {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #1a2d44;
+            cursor: pointer;
+            padding: 4px 0;
+        }
+
+        .faq-mini details p {
+            margin-top: 12px;
+            color: #2c4056;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            padding-right: 16px;
+        }
+
+        .footer-note {
+            text-align: center;
+            padding: 32px 0 48px;
+            color: #5d6f82;
+            border-top: 1px solid #dce2ec;
+            margin-top: 48px;
+            font-size: 0.9rem;
+        }
+
+        .footer-note a {
+            color: #c7522a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-note a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero {
+                padding: 48px 16px 44px;
+                border-radius: 0 0 24px 24px;
+            }
+            .intro-block {
+                padding: 24px 18px;
+            }
+            .card-grid {
+                gap: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="wrapper">
+            <h1>游戏信息 · 场景与选择</h1>
+            <div class="subhead">围绕「爱游戏」构建内容聚合、用途分类与人群适配的轻量信息层，帮助玩家更精准地发现值得投入的作品。</div>
+            <div class="hero-meta">
+                <span><i>🎮</i> 内容卡片 · 场景导览</span>
+                <span><i>📌</i> 品类分析与推荐逻辑</span>
+                <span><i>⚙️</i> 适合多元化玩家</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <!-- 自然链接段落及介绍 -->
+        <div class="intro-block">
+            <h2>从关键词到内容纵深</h2>
+            <p>一个游戏信息入口的价值，不止于罗列标题，更在于帮用户建立“为什么玩、适合谁、怎么用”的判断框架。无论是独立佳作还是大型作品，<a href="https://site-news-igame.com" class="highlight-link">爱游戏</a>致力于呈现经过筛选的资讯与评论视角，让每一次浏览都更接近真实需求。</p>
+            <p>我们更关注游戏背后的设计理念、社区生态与玩法核心，而非简单搬运公告。以下卡片从用途、人群、场景等维度展开，帮助你快速定位内容。</p>
+            <div class="link-embed">
+                👉 深入了解 → <a href="https://site-news-igame.com" class="highlight-link">爱游戏</a> 信息页
+            </div>
+        </div>
+
+        <!-- 信息卡片区域 -->
+        <div class="card-grid">
+            <div class="card">
+                <h3>🎯 用途卡片</h3>
+                <p>构建游戏信息聚合、类型筛选、评测摘要与内容索引。适合快速了解某款游戏的核心机制、媒体评分与玩家讨论热度，减少信息过载。</p>
+                <span class="tag">信息聚合</span>
+                <span class="tag">评测摘要</span>
+            </div>
+            <div class="card">
+                <h3>🧑‍🤝‍🧑 适合人群</h3>
+                <p>从单机剧情党、多人竞技爱好者到休闲叙事情感向玩家，均可在分类模块中找到对应推荐。内容风格偏向理性分析，同时兼顾主观体验。</p>
+                <span class="tag">剧情党</span>
+                <span class="tag">多人玩家</span>
+                <span class="tag">休闲探索</span>
+            </div>
+            <div class="card">
+                <h3>🕹️ 使用场景</h3>
+                <p>通勤阅读、碎片时间种草、周末深度选题、社区讨论前的背景查阅。卡片式信息支持快速浏览，降低决策成本。</p>
+                <span class="tag">碎片阅读</span>
+                <span class="tag">选题参考</span>
+            </div>
+            <div class="card">
+                <h3>🧩 内容特征</h3>
+                <p>避免华而不实的空洞描述，强调信息密度与版本时效。通过开发者访谈、更新解读、机制拆解等角度丰富游戏认知。</p>
+                <span class="tag">机制拆解</span>
+                <span class="tag">版本跟踪</span>
+            </div>
+        </div>
+
+        <!-- FAQ 摘要区 -->
+        <div class="faq-mini">
+            <details>
+                <summary>「爱游戏」的选品逻辑是什么？</summary>
+                <p>以玩家真实口碑、媒体均分、玩法独特性及长期更新支持为核心筛选维度。不盲目追逐热门，更重视作品本身完成度与类型代表性。内容覆盖主流平台与独立佳作。</p>
+            </details>
+            <details>
+                <summary>页面上的卡片信息是否持续更新？</summary>
+                <p>是的。卡片指向的品类与适合人群基于游戏发售后稳定期的数据，并随版本大更、社区反馈进行微调。部分长线运营游戏会单独维护场景说明。</p>
+            </details>
+            <details>
+                <summary>我可以如何利用这些信息做选择？</summary>
+                <p>建议先阅读用途卡片确认内容方向是否符合需求，再结合适合人群标签缩小范围。最后可通过自然链接段落跳转到 <a href="https://site-news-igame.com" class="highlight-link">爱游戏</a> 查阅完整文章与评测。</p>
+            </details>
+        </div>
+
+        <div class="footer-note">
+            <p>基于创作种子 c6b553f6647abda3 生成 · 内容方向：信息卡片式 · © 爱游戏 介绍页</p>
+            <p style="margin-top: 6px;">关注深度游戏信息 · <a href="https://site-news-igame.com">爱游戏</a> 收录值得投入的作品与观点</p>
+        </div>
+    </div>
+</body>
+</html>
